@@ -21,14 +21,117 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/todos": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Todos
+         * @description Get all todo items.
+         */
+        get: operations["get_todos_api_todos_get"];
+        put?: never;
+        /**
+         * Create Todo
+         * @description Create a new todo item.
+         */
+        post: operations["create_todo_api_todos_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/todos/{todo_id}/done": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Mark Todo Done
+         * @description Mark a todo item as done.
+         */
+        patch: operations["mark_todo_done_api_todos__todo_id__done_patch"];
+        trace?: never;
+    };
+    "/api/todos/{todo_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Todo
+         * @description Delete a todo item.
+         */
+        delete: operations["delete_todo_api_todos__todo_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        /** PingResponse */
+        /** HTTPValidationError */
+        HTTPValidationError: {
+            /** Detail */
+            detail?: components["schemas"]["ValidationError"][];
+        };
+        /**
+         * PingResponse
+         * @description Response model for ping endpoint.
+         */
         PingResponse: {
             /** Message */
             message: string;
+        };
+        /**
+         * TodoItemCreate
+         * @description Request model for creating a todo item.
+         */
+        TodoItemCreate: {
+            /** Title */
+            title: string;
+        };
+        /**
+         * TodoItemResponse
+         * @description Response model for a todo item.
+         */
+        TodoItemResponse: {
+            /** Id */
+            id: number;
+            /** Title */
+            title: string;
+            /** Is Done */
+            is_done: boolean;
+            /** Created At */
+            created_at: string;
+        };
+        /** ValidationError */
+        ValidationError: {
+            /** Location */
+            loc: (string | number)[];
+            /** Message */
+            msg: string;
+            /** Error Type */
+            type: string;
         };
     };
     responses: never;
@@ -55,6 +158,119 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["PingResponse"];
+                };
+            };
+        };
+    };
+    get_todos_api_todos_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TodoItemResponse"][];
+                };
+            };
+        };
+    };
+    create_todo_api_todos_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TodoItemCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TodoItemResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mark_todo_done_api_todos__todo_id__done_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                todo_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TodoItemResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_todo_api_todos__todo_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                todo_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

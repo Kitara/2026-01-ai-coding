@@ -1,0 +1,156 @@
+/* Todo Page Styles */
+.todoPage {
+  max-width: 800px;
+  margin: 0 auto;
+
+  & h1 {
+    margin-bottom: 2rem;
+    color: #333;
+  }
+}
+
+.todoForm {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+
+  & button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover:not(:disabled) {
+      background-color: #45a049;
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.todoInput {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+}
+
+.todoList {
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &.done {
+    background-color: #e8f5e9;
+    border-color: #4CAF50;
+  }
+}
+
+.todoContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.todoTitle {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.todoTitleDone {
+  font-size: 1.1rem;
+  color: #666;
+  text-decoration: line-through;
+}
+
+.todoDate {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.todoActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btnDone,
+.btnDelete {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.btnDone {
+  background-color: #4CAF50;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: #45a049;
+  }
+}
+
+.btnDelete {
+  background-color: #f44336;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: #da190b;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.errorMessage {
+  padding: 1rem;
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 4px;
+  color: #c62828;
+  margin-bottom: 1rem;
+}

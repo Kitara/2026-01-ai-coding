@@ -136,3 +136,5 @@ npm start
 ### TypeScript
 
 * PREFER using the `@/` alias for all imports over relative imports.
+* Use CSS nested selectors to simplify CSS complexity.
+* Isolate CSS into separate files for each component.

@@ -22,6 +22,9 @@ export function Layout() {
             <li>
               <Link to="/ping">Ping Demo</Link>
             </li>
+            <li>
+              <Link to="/todos">Todos</Link>
+            </li>
           </ul>
         </nav>
       </header>
