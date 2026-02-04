@@ -50,6 +50,7 @@ You are an expert in modern Python backend development. You write maintainable, 
   - Assert status codes and response shape (not exact timestamps/messages unless required)
 - Avoid test coupling through shared state:
   - Prefer a temporary DB / per-test transaction pattern when the suite grows.
+- In case of integration tests involving the database, **always use unique data** for codes, descriptions, etc. to avoid conflicts with existing data.
 
 ## Security & Reliability
 

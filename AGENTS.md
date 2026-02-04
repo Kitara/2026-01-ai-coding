@@ -118,6 +118,8 @@ uv run alembic upgrade head
 
 To keep a clean environment, **always** remove `app.db` before applying migrations during development.
 
+Note that the app uses SQLite. Therefore, you **must use SQLite batch mode in Alembic migrations**.
+
 ### Running the Application
 ```bash
 # Start backend (in one terminal)
@@ -154,3 +156,7 @@ The frontend proxies `/api` requests to http://localhost:8000 (configured in `vi
 * PREFER using the `@/` alias for all imports over relative imports.
 * Use CSS nested selectors to simplify CSS complexity.
 * Isolate CSS into separate files for each component using CSS modules (e.g., `ComponentName.module.css`).
+
+### Tests
+
+If not instructed otherwise, always write tests for new features and bug fixes. Align with existing test styles and practices.
